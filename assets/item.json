@@ -1,0 +1,22 @@
+{
+  "name": "item",
+  "version": "1.0.0",
+  "data": [
+    {
+      "id": 1,
+      "type": "weapon",
+      "name": "shortgun",
+      "damage": 20,
+      "weight": 10,
+      "value": 10
+    },
+    {
+      "id": 2,
+      "type": "armor",
+      "name": "shield",
+      "damage": 20,
+      "weight": 10,
+      "value": 10
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>키 입력 확인 예제</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #output {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            height: 100px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>키 입력 확인 예제</h1>
+    <a id="keyCheck">keychecking</a>
+    <p>키보드를 사용하여 입력해보세요.</p>
+    <div id="output"></div>
+
+    <script>
+        let testcnt = 0;
+        let pressedKeyList = [];
+        // keyup 이벤트 발생시 같이 누르고 있던 버튼이 keydown 이벤트를 더이상 발생시키지 않음
+        // 이유 불명 => 눌러질떄 값을 저장하고 keyup 이벤트 나올떄 삭제할 필요가 있음
+        // 엄청 많은 입력이 들어오니 숫자로 저장해야한다. enum 사용 예정
+        document.addEventListener('keydown', function(event) {
+            testcnt++;
+            pressedKeyList.push(event.code);
+            // ex) keyA, ControlLeft, Space, Digit1, Numpad1
+            const output = document.getElementById('output');
+            const message = `keydown: ${event.key} (Code: ${event.code}) testcnt: ${testcnt}`;
+            const messageElement = document.createElement('div');
+            messageElement.textContent = message;
+            output.appendChild(messageElement);
+            output.scrollTop = output.scrollHeight;
+            document.getElementById("keyCheck").textContent = pressedKeyList.toString();
+        });
+        document.addEventListener('keyup', function(event) {
+            testcnt++;
+            pressedKeyList = [];//이렇게 하면 안됨
+            const output = document.getElementById('output');
+            const message = `keyup: ${event.key} (Code: ${event.code}) testcnt: ${testcnt}`;
+            const messageElement = document.createElement('div');
+            messageElement.textContent = message;
+            output.appendChild(messageElement);
+            output.scrollTop = output.scrollHeight;
+        });
+        // key down을 사용할것/
+        // document.addEventListener('keypress', function(event) {
+        //     testcnt++;
+        //     const output = document.getElementById('output');
+        //     const message = `keypress: ${event.key} (Code: ${event.code}) testcnt: ${testcnt}`;
+        //     const messageElement = document.createElement('div');
+        //     messageElement.textContent = message;
+        //     output.appendChild(messageElement);
+        //     output.scrollTop = output.scrollHeight;
+        //     document.getElementById("keyCheck").textContent = pressedKeyList.toString();
+        // });
+    </script>
+</body>
+</html>
