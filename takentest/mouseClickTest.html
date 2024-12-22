@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마우스 입력 예제</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #output {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            height: 100px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>마우스 입력 예제</h1>
+    <p id="instructions">마우스를 움직이거나 클릭해보세요.</p>
+    <div id="output"></div>
+
+    <script>
+        const output = document.getElementById('output');
+
+        document.addEventListener('click', function(event) {
+            logEvent(`Mouse clicked at (${event.clientX}, ${event.clientY})`);
+        });
+
+        document.addEventListener('mousemove', function(event) {
+            logEvent(`Mouse moved to (${event.clientX}, ${event.clientY})`);
+        });
+
+        document.addEventListener('mousedown', function(event) {
+            logEvent(`Mouse button pressed at (${event.clientX}, ${event.clientY})`);
+        });
+
+        document.addEventListener('mouseup', function(event) {
+            logEvent(`Mouse button released at (${event.clientX}, ${event.clientY})`);
+        });
+
+        function logEvent(message) {
+            const messageElement = document.createElement('div');
+            messageElement.textContent = message;
+            output.appendChild(messageElement);
+            output.scrollTop = output.scrollHeight;
+        }
+    </script>
+</body>
+</html>
