@@ -2,7 +2,8 @@
   "name": "stage",
   "version": "1.0.0",
   "data": [
-    { "id": 1, "name": "openfield", "density": 10, "width": 1000, "height": 1000 },
-    { "id": 2, "name": "densefield", "density": 100, "width": 1000, "height": 1000 }
+    { "id": 1, "name": "basicfield", "density": 50, "points": 2 },
+    { "id": 2, "name": "openfield", "density": 10, "points": 0 },
+    { "id": 3, "name": "densefield", "density": 100, "points": 5 }
   ]
 }
